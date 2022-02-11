@@ -12,10 +12,7 @@ mysql -u root -p$PASSWORD -e "CREATE DATABASE IF NOT EXISTS todoApp"
 sed -i.bak -e '8d' ${OPTIONS}
 echo "spring.datasource.password="${PASSWORD} >> ${OPTIONS}
 
-# Run the application
-cd /home/joaquin/Desktop/Ejercicio/ToDoListApp/back
-"${JAVA_HOME}/bin/java" ${JAVA_OPTIONS} -jar ${JAR_NAME} ${OPTIONS2} & cd /home/joaquin/Desktop/Ejercicio/ToDoListApp/front && npm start
 
-# Close both ports (8080 and 3000)
-sudo kill $(sudo lsof -t -i:8080)
-sudo kill $(sudo lsof -t -i:3000)
+# Run the application
+cd /home/joaquin/Desktop/Ejercicio/ToDoListApp/front
+npm start & cd /home/joaquin/Desktop/Ejercicio/ToDoListApp/back && "${JAVA_HOME}/bin/java" ${JAVA_OPTIONS} -jar ${JAR_NAME} ${OPTIONS2}
