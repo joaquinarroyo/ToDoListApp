@@ -4,7 +4,7 @@ import {EditTask} from './components/task/EditTask';
 import { Folders } from './components/folder/Folders';
 import {Tasks} from './components/task/Tasks';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/folders.css'
+import './css/style.css'
 
 function App() {
   return (
