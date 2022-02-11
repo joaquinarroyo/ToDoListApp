@@ -1,5 +1,4 @@
 package com.back.controllers;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.back.entities.*;
-import com.back.repositories.FolderRepository;
-import com.back.repositories.TaskRepository;
 import com.back.services.FolderService;
 
 @RestController
@@ -24,10 +21,6 @@ import com.back.services.FolderService;
 public class FolderController {
 	@Autowired
 	private FolderService folderServ;
-	@Autowired
-	private FolderRepository folderRepo;
-	@Autowired
-	private TaskRepository taskRepo;
 	
 	
 	@GetMapping("folders")
