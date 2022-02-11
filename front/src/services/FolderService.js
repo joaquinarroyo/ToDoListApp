@@ -7,20 +7,21 @@ class FolderService {
     }
 
     getFolderById(id) {
-        return axios.get(ApiURL + 'folders/' + id);
+        return axios.get(ApiURL + 'folder/' + id);
     }
 
-    createFolder(folder) {
-        return axios.post(ApiURL + 'newFolder', {name: folder.name});
+    createFolder(name) {
+        return axios.post(ApiURL + 'newFolder', {name: name});
     }
 
-    updateFolder(folder) {
-        return axios.put(ApiURL + 'folder/', {id: folder.id, name: folder.name});
+    editFolder(folder) {
+        return axios.post(ApiURL + 'editFolder', folder);
     }
 
     deleteFolder(id) {
-        return axios.delete(ApiURL + 'folder/' + id);
+        return axios.delete(ApiURL + 'deleteFolder/' + id);
     }
+
 }
 
 export default new FolderService();
