@@ -2,6 +2,7 @@ import React from "react";
 import TaskService from "../../services/TaskService";
 import FolderService from "../../services/FolderService";
 import {Link} from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 
 // Tasks main component
@@ -20,11 +21,13 @@ class Tasks extends React.Component {
     async createTask() {
         await TaskService.createTask(
             {folder_id: this.state.folder_id, content: this.state.content});
+        toast.success("Task created with success.");
         this.componentDidMount();
     }
 
     async deleteTask(id) {
         await TaskService.deleteTask(id);
+        toast.success("Task deleted with success.");
         this.componentDidMount();
     }
 
@@ -61,6 +64,7 @@ class Tasks extends React.Component {
                     <Link to="/">Folders</Link> /  
                     {' ' + this.state.folder_name}
                 </h4>
+                <ToastContainer />
                 <table>
                     <tbody>
                     {this.state.tasks.map(task =>
@@ -69,7 +73,10 @@ class Tasks extends React.Component {
                                 <button>Done</button>
                             </td>
                             <td>{task.content}</td>
-                            <td><Link to={'/editTask?'+task.id}>Edit</Link></td>
+                            <td><Link to={'/editTask?'+task.id+'?'+
+                                this.state.folder_name +'?'+this.state.folder_id}>Edit
+                                </Link>
+                            </td>
                             <td>
                                 <Link to={'/viewTasks?'+this.state.folder_id}
                                 onClick={() => this.deleteTask(task.id)}>

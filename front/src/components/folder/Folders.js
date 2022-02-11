@@ -1,6 +1,8 @@
 import React from "react";
 import FolderService from "../../services/FolderService";
 import {Link} from "react-router-dom";
+import {ToastContainer, toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // Folders main component
@@ -16,12 +18,14 @@ class Folders extends React.Component {
     // Async functions so that when there is a change in the page it automatically updates
     async createFolder() {
         await FolderService.createFolder(this.state.name);
+        toast.success("Folder created with success.");
         this.componentDidMount();
         this.state.name = "";
     }
 
     async deleteFolder(id) {
         await FolderService.deleteFolder(id);
+        toast.success("Folder deleted with success.");
         this.componentDidMount();
     }
 
@@ -46,6 +50,7 @@ class Folders extends React.Component {
         return (
             <div>
                 <h4 class="m-4"><Link to='/'>Folders</Link></h4>
+                <ToastContainer />
                 <table class="m-3">
                     <tbody>
                     {this.state.folders.map(folder =>

@@ -1,5 +1,7 @@
 import React from "react";
 import FolderService from "../../services/FolderService";
+import {ToastContainer, toast} from "react-toastify";
+import {Link} from "react-router-dom";
 
 // Folder secondary component
 class EditFolder extends React.Component {
@@ -33,11 +35,16 @@ class EditFolder extends React.Component {
     render() {
         return (
             <div>
+                <h4 class="m-3">
+                    <Link to="/">Folders</Link> /  
+                    {' Editing "' + this.state.name +'" folder'}
+                </h4>
+                <ToastContainer />
                 <input type="text" value={this.state.name} onChange={this.onChangeName.bind(this)}/>
                 <button onClick={() => 
                     FolderService.editFolder(
                         {id: this.state.folder_id, 
-                         name: this.state.name})}>
+                         name: this.state.name}).then(toast.success("Folder edited succesfully"))}>
                         Edit
                 </button>
             </div>
