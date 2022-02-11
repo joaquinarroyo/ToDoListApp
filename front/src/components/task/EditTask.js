@@ -1,6 +1,7 @@
 import React from "react";
 import TaskService from "../../services/TaskService";
 
+// Tasks secondary component
 class EditTask extends React.Component {
     constructor(props) {
         super(props);
@@ -10,6 +11,7 @@ class EditTask extends React.Component {
         }
     }
 
+    // Get the task data from database
     componentDidMount() {
         var task_id = window.location.href.split("?")[1];
         TaskService.getTaskById(task_id).then(response => {
@@ -20,12 +22,14 @@ class EditTask extends React.Component {
         });
     }
 
+    // Update the potential new content of the task
     onChangeContent(e) {
         this.setState({
             content: e.target.value
         });
     }
 
+    // Render the input for the new content of the task
     render() {
         return (
             <div>

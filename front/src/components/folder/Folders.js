@@ -2,6 +2,8 @@ import React from "react";
 import FolderService from "../../services/FolderService";
 import {Link} from "react-router-dom";
 
+
+// Folders main component
 class Folders extends React.Component {
     constructor(props) {
         super(props);
@@ -11,6 +13,7 @@ class Folders extends React.Component {
         };
     }
     
+    // Async functions so that when there is a change in the page it automatically updates
     async createFolder() {
         await FolderService.createFolder(this.state.name);
         this.componentDidMount();
@@ -22,6 +25,7 @@ class Folders extends React.Component {
         this.componentDidMount();
     }
 
+    // Get the folders from the database
     componentDidMount() {
         FolderService.getAllFolders().then(response => {
             this.setState({
@@ -30,12 +34,14 @@ class Folders extends React.Component {
         });
     }
 
+    // Update the name of the potential new folder
     onChangeName(e) {
         this.setState({
             name: e.target.value
         });
     }
 
+    // Render the folders and the input for the new folder
     render() {
         return (
             <div>

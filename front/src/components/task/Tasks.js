@@ -3,6 +3,8 @@ import TaskService from "../../services/TaskService";
 import FolderService from "../../services/FolderService";
 import {Link} from "react-router-dom";
 
+
+// Tasks main component
 class Tasks extends React.Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,7 @@ class Tasks extends React.Component {
         };
     }
 
+    // Async functions so that when there is a change in the page it automatically updates
     async createTask() {
         await TaskService.createTask(
             {folder_id: this.state.folder_id, content: this.state.content});
@@ -25,6 +28,7 @@ class Tasks extends React.Component {
         this.componentDidMount();
     }
 
+    // Get the tasks related to the folder from the database
     componentDidMount() {
         var folder_id = window.location.href.split("?")[1];
 
@@ -42,12 +46,14 @@ class Tasks extends React.Component {
         });
     }
 
+    // Update the content of the potential new task
     onChangeContent(e) {
         this.setState({
             content: e.target.value
         });
     }
 
+    // Render the tasks and the input for the new task
     render() {
         return (
             <div>

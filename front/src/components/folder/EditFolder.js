@@ -1,6 +1,7 @@
 import React from "react";
 import FolderService from "../../services/FolderService";
 
+// Folder secondary component
 class EditFolder extends React.Component {
     constructor(props) {
         super(props);
@@ -10,6 +11,7 @@ class EditFolder extends React.Component {
         }
     }
 
+    // Get the folder data from database
     componentDidMount() {
         var folder_id = window.location.href.split("?")[1];
         FolderService.getFolderById(folder_id).then(response => {
@@ -20,12 +22,14 @@ class EditFolder extends React.Component {
         });
     }
 
+    // Update the potential new name of the folder
     onChangeName(e) {
         this.setState({
             name: e.target.value
         });
     }
 
+    // Render the input for the new name of the folder
     render() {
         return (
             <div>
