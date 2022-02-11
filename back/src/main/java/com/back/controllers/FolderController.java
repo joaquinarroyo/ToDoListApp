@@ -1,4 +1,4 @@
-package com.back.controladores;
+package com.back.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,14 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.back.repositorios.FolderRepository;
-import com.back.repositorios.TaskRepository;
-import com.back.entidades.*;
+
+import com.back.entities.*;
+import com.back.repositories.FolderRepository;
+import com.back.repositories.TaskRepository;
+import com.back.services.FolderService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/api/")
 public class FolderController {
+	@Autowired
+	private FolderService folderServ;
 	@Autowired
 	private FolderRepository folderRepo;
 	@Autowired
@@ -28,40 +32,26 @@ public class FolderController {
 	
 	@GetMapping("folders")
 	public List<Folder> getAllFolders() {
-		return folderRepo.findAll();
+		return folderServ.getAllFolders();
 	}
 	
 	@GetMapping("folder/{id}")
 	public Folder getFolderById(@PathVariable String id) {
-		Folder folder = folderRepo.findById(Long.valueOf(id)).get();
-		return folder;
+		return folderServ.getFolderById(Long.valueOf(id));
 	}
 	
 	@PostMapping("newFolder")
 	public void newFolder(@RequestBody Map<String, Object> payload) {
-		String name = (String)payload.get("name");
-		Folder newFolder = new Folder();
-		newFolder.setName(name);
-		newFolder.setTasks(new ArrayList<>());
-		folderRepo.save(newFolder);
+		folderServ.newFolder(payload);
 	}
 	
 	@PostMapping("editFolder")
 	public void editFolder(@RequestBody Map<String, Object> payload) {
-		Long id = Long.valueOf((String)payload.get("id"));
-		String name = (String)payload.get("name");
-		Folder folder = folderRepo.getById(id);
-		folder.setName(name);
-		
-		folderRepo.save(folder);
+		folderServ.editFolder(payload);
 	}
 	
 	@DeleteMapping("deleteFolder/{id}")
 	public void deleteFolder(@PathVariable String id) {
-		Folder folder = folderRepo.getById(Long.valueOf(id));
-		for (Task t : folder.getTasks()) {
-			taskRepo.delete(t);
-		}
-		folderRepo.delete(folder);
+		folderServ.deleteFolder(Long.valueOf(id));
 	}	
 }
