@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,14 +31,18 @@ public class FolderController {
 		return folderRepo.findAll();
 	}
 	
+	@GetMapping("folder/{id}")
+	public Folder getFolderById(@PathVariable String id) {
+		Folder folder = folderRepo.findById(Long.valueOf(id)).get();
+		return folder;
+	}
+	
 	@PostMapping("newFolder")
 	public void newFolder(@RequestBody Map<String, Object> payload) {
-		System.out.println("entra");
 		String name = (String)payload.get("name");
 		Folder newFolder = new Folder();
 		newFolder.setName(name);
 		newFolder.setTasks(new ArrayList<>());
-		
 		folderRepo.save(newFolder);
 	}
 	
@@ -51,7 +56,7 @@ public class FolderController {
 		folderRepo.save(folder);
 	}
 	
-	@GetMapping("deleteFolder/{id}")
+	@DeleteMapping("deleteFolder/{id}")
 	public void deleteFolder(@PathVariable String id) {
 		Folder folder = folderRepo.getById(Long.valueOf(id));
 		for (Task t : folder.getTasks()) {
