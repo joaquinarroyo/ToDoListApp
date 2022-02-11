@@ -51,17 +51,22 @@ tr a {
     color: blue;
 }
 
-form {
+.forms {
+    display: flex;
+    gap: 15px;
     width: auto;
 }
 
-form input {
+.forms input {
     border: .5px solid gray;
     border-radius: 0;
     padding: 2px 5px;
 }
 
-form input[type="text"] {
-    width: auto;
-    margin-right: 5px;
+.forms input[type="text"] {
+    width: 85%;
+}
+
+.forms button {
+    width: 15%;
 }
