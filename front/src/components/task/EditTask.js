@@ -40,20 +40,20 @@ class EditTask extends React.Component {
     // Render the input for the new content of the task
     render() {
         return (
-            <div>
-                <h4 class="m-3">
+            <div class="todo">
+                <h1>
                     <Link to="/">Folders</Link>
                     {' / '} 
                     <Link to={"/viewTasks?"+this.state.folder_id}>{this.state.folder_name}</Link>
                     {' / Editing task "' + this.state.content + '"'}
-                </h4>
+                </h1>
                 <ToastContainer/>
                 <input type="text" value={this.state.content} onChange={this.onChangeContent.bind(this)}/>
                 <button onClick={() => 
                     TaskService.editTask(
                         {id: this.state.task_id,
                          content: this.state.content}).then(toast.success("Task edited with success."))}>
-                        Edit
+                    Edit
                 </button>
             </div>
         );

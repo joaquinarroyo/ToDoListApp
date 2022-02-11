@@ -24,10 +24,8 @@ class TaskService {
     }
 
     // Switch the state 'done' of the given task
-    completeTask(task) {
-        return axios.post(ApiURL + 'switchStateTask', {
-            id: task.id,
-        });
+    completeTask(id) {
+        return axios.post(ApiURL + 'switchStateTask/'+ id);
     }
 
     // Delete the task with the given id from the database

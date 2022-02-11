@@ -31,6 +31,11 @@ class Tasks extends React.Component {
         this.componentDidMount();
     }
 
+    async completeTask(id) {
+        await TaskService.completeTask(id);
+        this.componentDidMount();
+    }
+
     // Get the tasks related to the folder from the database
     componentDidMount() {
         var folder_id = window.location.href.split("?")[1];
@@ -59,20 +64,20 @@ class Tasks extends React.Component {
     // Render the tasks and the input for the new task
     render() {
         return (
-            <div>
-                <h4 class="m-3">
+            <div class="todo">
+                <h1>
                     <Link to="/">Folders</Link> /  
                     {' ' + this.state.folder_name}
-                </h4>
+                </h1>
                 <ToastContainer />
                 <table>
                     <tbody>
                     {this.state.tasks.map(task =>
                         <tr key={task.id}>
                             <td>
-                                <button>Done</button>
+                                <input onChange={() => this.completeTask(task.id)}checked={task.done} type="checkbox" name="task" />
                             </td>
-                            <td>{task.content}</td>
+                            <td class="td-padding">{task.content}</td>
                             <td><Link to={'/editTask?'+task.id+'?'+
                                 this.state.folder_name +'?'+this.state.folder_id}>Edit
                                 </Link>
@@ -87,12 +92,10 @@ class Tasks extends React.Component {
                     )}
                     </tbody>
                 </table>
-                <div class="input-group">
-                <   input class="form-control form-control-lg m-3" type="text" 
+                <div>
+                    <input type="text" 
                     value={this.state.newTask} onChange={this.onChangeContent.bind(this)}/>
-                    <button class="btn btn-default" onClick={() => this.createTask()}>
-                            Add
-                    </button>
+                    <button onClick={() => this.createTask()}>Add</button>
                 </div>
             </div>
         );

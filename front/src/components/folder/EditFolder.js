@@ -34,18 +34,18 @@ class EditFolder extends React.Component {
     // Render the input for the new name of the folder
     render() {
         return (
-            <div>
-                <h4 class="m-3">
+            <div class="todo">
+                <h1>
                     <Link to="/">Folders</Link> /  
                     {' Editing "' + this.state.name +'" folder'}
-                </h4>
+                </h1>
                 <ToastContainer />
                 <input type="text" value={this.state.name} onChange={this.onChangeName.bind(this)}/>
                 <button onClick={() => 
                     FolderService.editFolder(
                         {id: this.state.folder_id, 
                          name: this.state.name}).then(toast.success("Folder edited succesfully"))}>
-                        Edit
+                    Edit
                 </button>
             </div>
         );

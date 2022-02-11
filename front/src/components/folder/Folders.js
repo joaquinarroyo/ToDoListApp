@@ -48,14 +48,14 @@ class Folders extends React.Component {
     // Render the folders and the input for the new folder
     render() {
         return (
-            <div>
-                <h4 class="m-4"><Link to='/'>Folders</Link></h4>
+            <div class="todo">
+                <h1><Link to='/'>Folders</Link></h1>
                 <ToastContainer />
-                <table class="m-3">
+                <table>
                     <tbody>
                     {this.state.folders.map(folder =>
                         <tr key={folder.id}>
-                            <td>- {folder.name}</td>
+                            <td class="td-padding">-{folder.name}</td>
                             <td><Link to={'/viewTasks?'+folder.id}>View items</Link></td>
                             <td><Link to={'/editFolder?'+folder.id}>Edit</Link></td>
                             <td>
@@ -69,9 +69,9 @@ class Folders extends React.Component {
                     </tbody>
                 </table>
                 <div>
-                    <input type="text" value={this.state.name} 
+                    <input type="text" placeholder="New folder" value={this.state.name} 
                         onChange={this.onChangeName.bind(this)}/>
-                    <button onClick={() => this.createFolder()}>Create</button>
+                    <button onClick={() => this.createFolder()}>Add</button>
                 </div>
             </div>
         );
