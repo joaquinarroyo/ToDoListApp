@@ -11,7 +11,8 @@ class EditTask extends React.Component {
             task_id: 0,
             folder_id: 0,
             folder_name: "",
-            content: "",
+            oldContent: "",
+            content: ""
         }
     }
 
@@ -25,7 +26,7 @@ class EditTask extends React.Component {
                 task_id: task_id,
                 folder_name: folder_name,
                 folder_id: folder_id,
-                content: response.data.content
+                oldContent: response.data.content
             });
         });
     }
@@ -45,16 +46,18 @@ class EditTask extends React.Component {
                     <Link to="/">Folders</Link>
                     {' / '} 
                     <Link to={"/viewTasks?"+this.state.folder_id}>{this.state.folder_name}</Link>
-                    {' / Editing task "' + this.state.content + '"'}
+                    {' / Editing task "' + this.state.oldContent + '"'}
                 </h1>
                 <ToastContainer/>
-                <input type="text" value={this.state.content} onChange={this.onChangeContent.bind(this)}/>
-                <button onClick={() => 
-                    TaskService.editTask(
-                        {id: this.state.task_id,
-                         content: this.state.content}).then(toast.success("Task edited with success."))}>
-                    Edit
-                </button>
+                <div class="forms">
+                    <input type="text" value={this.state.content} onChange={this.onChangeContent.bind(this)}/>
+                    <button onClick={() => 
+                        TaskService.editTask(
+                            {id: this.state.task_id,
+                            content: this.state.content}).then(toast.success("Task edited with success."))}>
+                        Edit
+                    </button>
+                </div>
             </div>
         );
     }

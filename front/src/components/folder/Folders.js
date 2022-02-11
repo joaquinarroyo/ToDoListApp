@@ -68,7 +68,7 @@ class Folders extends React.Component {
                     )}
                     </tbody>
                 </table>
-                <div>
+                <div class="forms">
                     <input type="text" placeholder="New folder" value={this.state.name} 
                         onChange={this.onChangeName.bind(this)}/>
                     <button onClick={() => this.createFolder()}>Add</button>

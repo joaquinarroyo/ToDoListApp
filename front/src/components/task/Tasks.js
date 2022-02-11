@@ -10,19 +10,20 @@ class Tasks extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            tasks: [],
             folder_id: 0,
             folder_name: "",
-            tasks: [],
-            content: ""
+            newTask: ""
         };
     }
 
     // Async functions so that when there is a change in the page it automatically updates
     async createTask() {
         await TaskService.createTask(
-            {folder_id: this.state.folder_id, content: this.state.content});
+            {folder_id: this.state.folder_id, content: this.state.newTask});
         toast.success("Task created with success.");
         this.componentDidMount();
+        this.state.newTask = "";
     }
 
     async deleteTask(id) {
@@ -55,9 +56,9 @@ class Tasks extends React.Component {
     }
 
     // Update the content of the potential new task
-    onChangeContent(e) {
+    onChangeNewTask(e) {
         this.setState({
-            content: e.target.value
+            newTask: e.target.value
         });
     }
 
@@ -92,9 +93,9 @@ class Tasks extends React.Component {
                     )}
                     </tbody>
                 </table>
-                <div>
+                <div class="forms">
                     <input type="text" 
-                    value={this.state.newTask} onChange={this.onChangeContent.bind(this)}/>
+                    value={this.state.newTask} onChange={this.onChangeNewTask.bind(this)}/>
                     <button onClick={() => this.createTask()}>Add</button>
                 </div>
             </div>
