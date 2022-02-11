@@ -45,7 +45,7 @@ class EditTask extends React.Component {
                     <Link to="/">Folders</Link>
                     {' / '} 
                     <Link to={"/viewTasks?"+this.state.folder_id}>{this.state.folder_name}</Link>
-                    {' / Editing task'}
+                    {' / Editing task "' + this.state.content + '"'}
                 </h4>
                 <ToastContainer/>
                 <input type="text" value={this.state.content} onChange={this.onChangeContent.bind(this)}/>
