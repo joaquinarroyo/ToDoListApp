@@ -1,4 +1,4 @@
-package com.back.entidades;
+package com.back.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Task {
+	// Task entity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
