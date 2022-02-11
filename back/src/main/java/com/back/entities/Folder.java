@@ -1,4 +1,4 @@
-package com.back.entidades;
+package com.back.entities;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 public class Folder {
+	// Folder Entity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -44,6 +45,4 @@ public class Folder {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	
-	
 }
