@@ -26,6 +26,10 @@
     color: black;
 }
 
+.todo h1 a:hover {
+    color: rgb(68, 68, 68);
+}
+
 table {
     margin: 15px 0;
 }
@@ -59,32 +63,28 @@ tr a {
 
 .forms input {
     border: .5px solid gray;
-    border-radius: 0;
+    border-radius: 0px;
     padding: 2px 5px;
 }
 
 .forms input[type="text"] {
     border-radius: 5px;
-    width: 85%
+    width: 83%
 }
 
 .forms button {
-    width: 15%;
+    width: 17%;
 }
 
 .button-4 {
   background-color: #FAFBFC;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
+  border: .5px solid gray;
+  border-radius: 5px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
   color: #24292E;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
   list-style: none;
   padding: 6px 16px;
   transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
