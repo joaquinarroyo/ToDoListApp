@@ -70,7 +70,7 @@ class Tasks extends React.Component {
                     <Link to="/">Folders</Link> /  
                     {' ' + this.state.folder_name}
                 </h1>
-                <ToastContainer />
+                <ToastContainer autoClose={2000}/>
                 <table>
                     <tbody>
                     {this.state.tasks.map(task =>
@@ -94,9 +94,9 @@ class Tasks extends React.Component {
                     </tbody>
                 </table>
                 <div class="forms">
-                    <input type="text" 
+                    <input type="text" placeholder="New task"
                     value={this.state.newTask} onChange={this.onChangeNewTask.bind(this)}/>
-                    <button onClick={() => this.createTask()}>Add</button>
+                    <button class="button-4" onClick={() => this.createTask()}>Add</button>
                 </div>
             </div>
         );

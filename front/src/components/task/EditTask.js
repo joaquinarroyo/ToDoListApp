@@ -48,10 +48,10 @@ class EditTask extends React.Component {
                     <Link to={"/viewTasks?"+this.state.folder_id}>{this.state.folder_name}</Link>
                     {' / Editing task "' + this.state.oldContent + '"'}
                 </h1>
-                <ToastContainer/>
+                <ToastContainer autoClose={2000}/>
                 <div class="forms">
                     <input type="text" value={this.state.content} onChange={this.onChangeContent.bind(this)}/>
-                    <button onClick={() => 
+                    <button class="button-4" onClick={() => 
                         TaskService.editTask(
                             {id: this.state.task_id,
                             content: this.state.content}).then(toast.success("Task edited with success."))}>

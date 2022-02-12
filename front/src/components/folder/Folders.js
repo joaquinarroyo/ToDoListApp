@@ -49,8 +49,8 @@ class Folders extends React.Component {
     render() {
         return (
             <div class="todo">
-                <h1><Link to='/'>Folders</Link></h1>
-                <ToastContainer />
+                <h1>Folders</h1>
+                <ToastContainer autoClose={2000}/>
                 <table>
                     <tbody>
                     {this.state.folders.map(folder =>

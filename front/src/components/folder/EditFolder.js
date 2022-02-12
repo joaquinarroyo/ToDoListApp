@@ -40,10 +40,10 @@ class EditFolder extends React.Component {
                     <Link to="/">Folders</Link> /  
                     {' Editing "' + this.state.oldName +'" folder'}
                 </h1>
-                <ToastContainer />
+                <ToastContainer autoClose={2000}/>
                 <div class="forms">
                     <input type="text" onChange={this.onChangeName.bind(this)}/>
-                    <button onClick={() => 
+                    <button class="button-4" onClick={() => 
                         FolderService.editFolder(
                             {id: this.state.folder_id, 
                             name: this.state.name}).then(toast.success("Folder edited succesfully"))}>
