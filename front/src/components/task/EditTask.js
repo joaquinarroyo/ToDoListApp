@@ -26,6 +26,7 @@ class EditTask extends React.Component {
                 task_id: task_id,
                 folder_name: folder_name,
                 folder_id: folder_id,
+                content: response.data.content,
                 oldContent: response.data.content
             });
         });
@@ -46,7 +47,7 @@ class EditTask extends React.Component {
                     <Link to="/">Folders</Link>
                     {' / '} 
                     <Link to={"/viewTasks?"+this.state.folder_id}>{this.state.folder_name}</Link>
-                    {' / Editing task "' + this.state.oldContent + '"'}
+                    {' / Editing task '}
                 </h1>
                 <ToastContainer autoClose={2000}/>
                 <div class="forms">
@@ -54,7 +55,8 @@ class EditTask extends React.Component {
                     <button class="button-4" onClick={() => 
                         TaskService.editTask(
                             {id: this.state.task_id,
-                            content: this.state.content}).then(toast.success("Task edited with success."))}>
+                            content: this.state.content}).then(toast.success("Task '" + this.state.oldContent 
+                                                                    + "' edited with success."))}>
                         Edit
                     </button>
                 </div>

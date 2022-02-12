@@ -20,6 +20,7 @@ class EditFolder extends React.Component {
         FolderService.getFolderById(folder_id).then(response => {
             this.setState({
                 folder_id: folder_id,
+                name: response.data.name,
                 oldName: response.data.name
             });
         });
@@ -38,15 +39,16 @@ class EditFolder extends React.Component {
             <div class="todo">
                 <h1>
                     <Link to="/">Folders</Link> /  
-                    {' Editing "' + this.state.oldName +'" folder'}
+                    {' Editing folder'}
                 </h1>
                 <ToastContainer autoClose={2000}/>
                 <div class="forms">
-                    <input type="text" onChange={this.onChangeName.bind(this)}/>
+                    <input type="text" value={this.state.name} onChange={this.onChangeName.bind(this)}/>
                     <button class="button-4" onClick={() => 
                         FolderService.editFolder(
                             {id: this.state.folder_id, 
-                            name: this.state.name}).then(toast.success("Folder edited succesfully"))}>
+                            name: this.state.name}).then(toast.success("Folder '" + this.state.oldName
+                                                    + "' edited succesfully"))}>
                         Edit
                     </button>
                 </div>
