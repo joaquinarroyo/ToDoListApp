@@ -39,10 +39,14 @@ table {
     padding-right: 7px;
 }
 
-table tr td a {
+table tr {
     display: grid;
     grid-template-columns: 1fr repeat(3, auto);
     gap: 10px;
+}
+
+tr {
+  border-bottom: 1px solid grey;
 }
 
 tr label {
@@ -58,7 +62,6 @@ tr a {
 .forms {
     display: flex;
     gap: 15px;
-    width: auto;
 }
 
 .forms input {
@@ -72,10 +75,6 @@ tr a {
     width: 83%
 }
 
-.forms button {
-    width: 17%;
-}
-
 .button-4 {
   background-color: #FAFBFC;
   border: .5px solid gray;
@@ -83,10 +82,9 @@ tr a {
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
   color: #24292E;
+  width: 17%;
   cursor: pointer;
   display: inline-block;
-  list-style: none;
-  padding: 6px 16px;
   transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
 }
 
@@ -94,13 +92,6 @@ tr a {
   background-color: #F3F4F6;
   text-decoration: none;
   transition-duration: 0.1s;
-}
-
-.button-4:disabled {
-  background-color: #FAFBFC;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
-  cursor: default;
 }
 
 .button-4:active {
@@ -111,12 +102,4 @@ tr a {
 
 .button-4:focus {
   outline: 1px transparent;
-}
-
-.button-4:before {
-  display: none;
-}
-
-.button-4:-webkit-details-marker {
-  display: none;
 }
