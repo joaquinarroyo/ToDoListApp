@@ -72,7 +72,6 @@ class Tasks extends React.Component {
                 </h1>
                 <ToastContainer autoClose={2000}/>
                 <table>
-                    <tbody>
                     {this.state.tasks.map(task =>
                         <tr key={task.id}>
                             <td>
@@ -91,7 +90,6 @@ class Tasks extends React.Component {
                             </td>
                         </tr>
                     )}
-                    </tbody>
                 </table>
                 <div class="forms">
                     <input type="text" placeholder="New task"
