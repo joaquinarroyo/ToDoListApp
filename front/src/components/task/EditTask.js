@@ -57,7 +57,7 @@ class EditTask extends React.Component {
                             {id: this.state.task_id,
                             content: this.state.content}).then(toast.success("Task '" + this.state.oldContent 
                                                                     + "' edited with success."))}>
-                        Edit
+                            Edit
                     </button>
                 </div>
             </div>

@@ -49,7 +49,7 @@ class EditFolder extends React.Component {
                             {id: this.state.folder_id, 
                             name: this.state.name}).then(toast.success("Folder '" + this.state.oldName
                                                     + "' edited succesfully"))}>
-                        Edit
+                            Edit
                     </button>
                 </div>
             </div>
