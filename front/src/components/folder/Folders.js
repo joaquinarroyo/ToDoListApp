@@ -53,7 +53,7 @@ class Folders extends React.Component {
                 <ToastContainer autoClose={2000}/>
                 <table>
                     {this.state.folders.map(folder =>
-                        <tr key={folder.id}>
+                        <tr key={folder.id} class="folders">
                             <td><label>-{folder.name}</label></td>
                             <td><Link to={'/viewTasks?'+folder.id}>View items</Link></td>
                             <td><Link to={'/editFolder?'+folder.id}>Edit</Link></td>

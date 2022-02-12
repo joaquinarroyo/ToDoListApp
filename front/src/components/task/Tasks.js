@@ -73,7 +73,7 @@ class Tasks extends React.Component {
                 <ToastContainer autoClose={2000}/>
                 <table>
                     {this.state.tasks.map(task =>
-                        <tr key={task.id}>
+                        <tr key={task.id} class="tasks">
                             <td>
                                 <input onChange={() => this.completeTask(task.id)}checked={task.done} type="checkbox" name="task" />
                             </td>

@@ -31,6 +31,7 @@
 }
 
 table {
+    width: 100%;
     margin: 15px 0;
 }
 
@@ -39,7 +40,13 @@ table {
     padding-right: 7px;
 }
 
-table tr {
+.tasks {
+    display: grid;
+    grid-template-columns: repeat(1, auto) 1fr repeat(2, auto);
+    gap: 10px;
+}
+
+.folders {
     display: grid;
     grid-template-columns: 1fr repeat(3, auto);
     gap: 10px;
