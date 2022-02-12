@@ -21,14 +21,14 @@ class Tasks extends React.Component {
     async createTask() {
         await TaskService.createTask(
             {folder_id: this.state.folder_id, content: this.state.newTask});
-        toast.success("Task created with success.");
+        toast.success("Task '" + this.state.newTask +"' created with success.");
         this.componentDidMount();
         this.state.newTask = "";
     }
 
-    async deleteTask(id) {
+    async deleteTask(id, name) {
         await TaskService.deleteTask(id);
-        toast.success("Task deleted with success.");
+        toast.success("Task '"+ name + "' deleted with success.");
         this.componentDidMount();
     }
 
@@ -78,14 +78,14 @@ class Tasks extends React.Component {
                             <td>
                                 <input onChange={() => this.completeTask(task.id)}checked={task.done} type="checkbox" name="task" />
                             </td>
-                            <td class="td-padding">{task.content}</td>
+                            <td>{task.content}</td>
                             <td><Link to={'/editTask?'+task.id+'?'+
                                 this.state.folder_name +'?'+this.state.folder_id}>Edit
                                 </Link>
                             </td>
                             <td>
                                 <Link to={'/viewTasks?'+this.state.folder_id}
-                                onClick={() => this.deleteTask(task.id)}>
+                                onClick={() => this.deleteTask(task.id, task.content)}>
                                 Delete
                                 </Link>
                             </td>

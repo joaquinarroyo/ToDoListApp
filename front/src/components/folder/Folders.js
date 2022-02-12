@@ -18,14 +18,14 @@ class Folders extends React.Component {
     // Async functions so that when there is a change in the page it automatically updates
     async createFolder() {
         await FolderService.createFolder(this.state.name);
-        toast.success("Folder created with success.");
+        toast.success("Folder '"+ this.state.name +"' created with success.");
         this.componentDidMount();
         this.state.name = "";
     }
 
-    async deleteFolder(id) {
+    async deleteFolder(id, name) {
         await FolderService.deleteFolder(id);
-        toast.success("Folder deleted with success.");
+        toast.success("Folder '"+ name +"' deleted with success.");
         this.componentDidMount();
     }
 
@@ -52,21 +52,19 @@ class Folders extends React.Component {
                 <h1>Folders</h1>
                 <ToastContainer autoClose={2000}/>
                 <table>
-                    <tbody>
                     {this.state.folders.map(folder =>
                         <tr key={folder.id}>
-                            <td class="td-padding">-{folder.name}</td>
+                            <td><label>-{folder.name}</label></td>
                             <td><Link to={'/viewTasks?'+folder.id}>View items</Link></td>
                             <td><Link to={'/editFolder?'+folder.id}>Edit</Link></td>
                             <td>
                                 <Link to={'/'} 
-                                onClick={() => this.deleteFolder(folder.id)}>
+                                onClick={() => this.deleteFolder(folder.id, folder.name)}>
                                 Remove
                                 </Link>
                             </td>
                         </tr>
                     )}
-                    </tbody>
                 </table>
                 <div class="forms">
                     <input type="text" placeholder="New folder" value={this.state.name} 
@@ -77,5 +75,6 @@ class Folders extends React.Component {
         );
     }
 }
+
 
 export {Folders};
