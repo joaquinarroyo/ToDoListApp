@@ -14,4 +14,5 @@ echo "spring.datasource.password="${PASSWORD} >> ${OPTIONS}
 
 # Run the application
 cd ../front
+npm run build
 npm start & cd ../back && "${JAVA_HOME}/bin/java" ${JAVA_OPTIONS} -jar ${JAR_NAME} ${OPTIONS2}
